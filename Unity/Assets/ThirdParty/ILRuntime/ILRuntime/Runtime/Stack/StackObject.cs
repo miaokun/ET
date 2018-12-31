@@ -16,6 +16,26 @@ namespace ILRuntime.Runtime.Stack
         public int Value;
         public int ValueLow;
 
+        public unsafe StackObject* ValueLong
+        {
+            get
+            {
+                fixed (int* i = &this.Value)
+                {
+                    ulong* p = (ulong*) i;
+                    return (StackObject*) (*p);
+                }
+            }
+            set
+            {
+                fixed (int* i = &this.Value)
+                {
+                    ulong* p = (ulong*) i;
+                    *p = (ulong)value;
+                }
+            }
+        }
+
         public static bool operator ==(StackObject a, StackObject b)
         {
             return (a.ObjectType == b.ObjectType) && (a.Value == b.Value) && (a.ValueLow == b.ValueLow);
@@ -89,11 +109,11 @@ namespace ILRuntime.Runtime.Stack
                     }
                 case ObjectTypes.StackObjectReference:
                     {
-                        return ToObject((*(StackObject**)&esp->Value), appdomain, mStack);
+                        return ToObject(esp->ValueLong, appdomain, mStack);
                     }
                 case ObjectTypes.ValueTypeObjectReference:
                     {
-                        StackObject* dst = *(StackObject**)&esp->Value;
+                        StackObject* dst = esp->ValueLong;
                         IType type = appdomain.GetType(dst->Value);
                         if (type is ILType)
                         {

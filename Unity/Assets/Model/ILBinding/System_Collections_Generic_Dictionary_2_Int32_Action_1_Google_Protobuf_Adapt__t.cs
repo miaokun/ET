@@ -97,7 +97,7 @@ namespace ILRuntime.Runtime.Generated
             {
                 case ObjectTypes.StackObjectReference:
                     {
-                        var ___dst = *(StackObject**)&ptr_of_this_method->Value;
+                        var ___dst = ptr_of_this_method->ValueLong;
                         object ___obj = @value;
                         if (___dst->ObjectType >= ObjectTypes.Object)
                         {
