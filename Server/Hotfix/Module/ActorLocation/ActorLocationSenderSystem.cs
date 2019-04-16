@@ -4,12 +4,11 @@ using ETModel;
 namespace ETHotfix
 {
     [ObjectSystem]
-    public class ActorLocationSenderAwakeSystem : AwakeSystem<ActorLocationSender, long>
+    public class ActorLocationSenderAwakeSystem : AwakeSystem<ActorLocationSender>
     {
-        public override void Awake(ActorLocationSender self, long id)
+        public override void Awake(ActorLocationSender self)
         {
             self.LastSendTime = TimeHelper.Now();
-	        self.Id = id;
             self.Tcs = null;
             self.FailTimes = 0;
             self.ActorId = 0;
@@ -28,9 +27,7 @@ namespace ETHotfix
         {
             self.ActorId = await Game.Scene.GetComponent<LocationProxyComponent>().Get(self.Id);
 
-            self.Address = StartConfigComponent.Instance
-                    .Get(IdGenerater.GetAppIdFromId(self.ActorId))
-                    .GetComponent<InnerConfig>().IPEndPoint;
+            self.Address = StartConfigComponent.Instance.GetInnerAddress(IdGenerater.GetAppId(self.ActorId));
 
             self.UpdateAsync().Coroutine();
         }
@@ -161,9 +158,7 @@ namespace ETHotfix
 					// 等待0.5s再发送
 					await Game.Scene.GetComponent<TimerComponent>().WaitAsync(500);
 					self.ActorId = await Game.Scene.GetComponent<LocationProxyComponent>().Get(self.Id);
-					self.Address = StartConfigComponent.Instance
-							.Get(IdGenerater.GetAppIdFromId(self.ActorId))
-							.GetComponent<InnerConfig>().IPEndPoint;
+					self.Address = StartConfigComponent.Instance.GetInnerAddress(IdGenerater.GetAppId(self.ActorId));
 					self.AllowGet();
 					return;
 				

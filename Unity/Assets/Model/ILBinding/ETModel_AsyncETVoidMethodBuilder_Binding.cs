@@ -44,7 +44,7 @@ namespace ILRuntime.Runtime.Generated
             {
                 foreach(var m in lst)
                 {
-                    if(m.GetParameters().Length == 1)
+                    if(m.MatchGenericParameters(args, typeof(void), typeof(ETModel.IAsyncStateMachineClassInheritanceAdaptor.IAsyncStateMachineAdaptor).MakeByRefType()))
                     {
                         method = m.MakeGenericMethod(args);
                         app.RegisterCLRMethodRedirection(method, Start_1);
@@ -61,7 +61,7 @@ namespace ILRuntime.Runtime.Generated
             {
                 foreach(var m in lst)
                 {
-                    if(m.GetParameters().Length == 2)
+                    if(m.MatchGenericParameters(args, typeof(void), typeof(ETModel.ETTask<Google.Protobuf.Adapt_IMessage.Adaptor>.Awaiter).MakeByRefType(), typeof(ETModel.IAsyncStateMachineClassInheritanceAdaptor.IAsyncStateMachineAdaptor).MakeByRefType()))
                     {
                         method = m.MakeGenericMethod(args);
                         app.RegisterCLRMethodRedirection(method, AwaitUnsafeOnCompleted_3);
@@ -81,7 +81,7 @@ namespace ILRuntime.Runtime.Generated
             {
                 foreach(var m in lst)
                 {
-                    if(m.GetParameters().Length == 2)
+                    if(m.MatchGenericParameters(args, typeof(void), typeof(ETModel.ETTask.Awaiter).MakeByRefType(), typeof(ETModel.IAsyncStateMachineClassInheritanceAdaptor.IAsyncStateMachineAdaptor).MakeByRefType()))
                     {
                         method = m.MakeGenericMethod(args);
                         app.RegisterCLRMethodRedirection(method, AwaitUnsafeOnCompleted_6);
@@ -90,12 +90,12 @@ namespace ILRuntime.Runtime.Generated
                     }
                 }
             }
-            args = new Type[]{typeof(System.Runtime.CompilerServices.TaskAwaiter<ETModel.IResponse>), typeof(ETModel.IAsyncStateMachineClassInheritanceAdaptor.IAsyncStateMachineAdaptor)};
+            args = new Type[]{typeof(ETModel.ETTask<ETModel.IResponse>.Awaiter), typeof(ETModel.IAsyncStateMachineClassInheritanceAdaptor.IAsyncStateMachineAdaptor)};
             if (genericMethods.TryGetValue("AwaitUnsafeOnCompleted", out lst))
             {
                 foreach(var m in lst)
                 {
-                    if(m.GetParameters().Length == 2)
+                    if(m.MatchGenericParameters(args, typeof(void), typeof(ETModel.ETTask<ETModel.IResponse>.Awaiter).MakeByRefType(), typeof(ETModel.IAsyncStateMachineClassInheritanceAdaptor.IAsyncStateMachineAdaptor).MakeByRefType()))
                     {
                         method = m.MakeGenericMethod(args);
                         app.RegisterCLRMethodRedirection(method, AwaitUnsafeOnCompleted_7);
@@ -187,7 +187,7 @@ namespace ILRuntime.Runtime.Generated
             {
                 case ObjectTypes.StackObjectReference:
                     {
-                        var ___dst = ptr_of_this_method->ValueLong;
+                        var ___dst = ILIntepreter.ResolveReference(ptr_of_this_method);
                         object ___obj = @stateMachine;
                         if (___dst->ObjectType >= ObjectTypes.Object)
                         {
@@ -286,7 +286,7 @@ namespace ILRuntime.Runtime.Generated
             {
                 case ObjectTypes.StackObjectReference:
                     {
-                        var ___dst = ptr_of_this_method->ValueLong;
+                        var ___dst = ILIntepreter.ResolveReference(ptr_of_this_method);
                         object ___obj = @stateMachine;
                         if (___dst->ObjectType >= ObjectTypes.Object)
                         {
@@ -341,7 +341,7 @@ namespace ILRuntime.Runtime.Generated
             {
                 case ObjectTypes.StackObjectReference:
                     {
-                        var ___dst = ptr_of_this_method->ValueLong;
+                        var ___dst = ILIntepreter.ResolveReference(ptr_of_this_method);
                         object ___obj = @awaiter;
                         if (___dst->ObjectType >= ObjectTypes.Object)
                         {
@@ -463,7 +463,7 @@ namespace ILRuntime.Runtime.Generated
             {
                 case ObjectTypes.StackObjectReference:
                     {
-                        var ___dst = ptr_of_this_method->ValueLong;
+                        var ___dst = ILIntepreter.ResolveReference(ptr_of_this_method);
                         object ___obj = @stateMachine;
                         if (___dst->ObjectType >= ObjectTypes.Object)
                         {
@@ -518,7 +518,7 @@ namespace ILRuntime.Runtime.Generated
             {
                 case ObjectTypes.StackObjectReference:
                     {
-                        var ___dst = ptr_of_this_method->ValueLong;
+                        var ___dst = ILIntepreter.ResolveReference(ptr_of_this_method);
                         object ___obj = @awaiter;
                         if (___dst->ObjectType >= ObjectTypes.Object)
                         {
@@ -585,20 +585,20 @@ namespace ILRuntime.Runtime.Generated
             ETModel.IAsyncStateMachineClassInheritanceAdaptor.IAsyncStateMachineAdaptor @stateMachine = (ETModel.IAsyncStateMachineClassInheritanceAdaptor.IAsyncStateMachineAdaptor)typeof(ETModel.IAsyncStateMachineClassInheritanceAdaptor.IAsyncStateMachineAdaptor).CheckCLRTypes(__intp.RetriveObject(ptr_of_this_method, __mStack));
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
-            System.Runtime.CompilerServices.TaskAwaiter<ETModel.IResponse> @awaiter = (System.Runtime.CompilerServices.TaskAwaiter<ETModel.IResponse>)typeof(System.Runtime.CompilerServices.TaskAwaiter<ETModel.IResponse>).CheckCLRTypes(__intp.RetriveObject(ptr_of_this_method, __mStack));
+            ETModel.ETTask<ETModel.IResponse>.Awaiter @awaiter = (ETModel.ETTask<ETModel.IResponse>.Awaiter)typeof(ETModel.ETTask<ETModel.IResponse>.Awaiter).CheckCLRTypes(__intp.RetriveObject(ptr_of_this_method, __mStack));
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 3);
             ptr_of_this_method = ILIntepreter.GetObjectAndResolveReference(ptr_of_this_method);
             ETModel.AsyncETVoidMethodBuilder instance_of_this_method = (ETModel.AsyncETVoidMethodBuilder)typeof(ETModel.AsyncETVoidMethodBuilder).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
 
-            instance_of_this_method.AwaitUnsafeOnCompleted<System.Runtime.CompilerServices.TaskAwaiter<ETModel.IResponse>, ETModel.IAsyncStateMachineClassInheritanceAdaptor.IAsyncStateMachineAdaptor>(ref @awaiter, ref @stateMachine);
+            instance_of_this_method.AwaitUnsafeOnCompleted<ETModel.ETTask<ETModel.IResponse>.Awaiter, ETModel.IAsyncStateMachineClassInheritanceAdaptor.IAsyncStateMachineAdaptor>(ref @awaiter, ref @stateMachine);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
             switch(ptr_of_this_method->ObjectType)
             {
                 case ObjectTypes.StackObjectReference:
                     {
-                        var ___dst = ptr_of_this_method->ValueLong;
+                        var ___dst = ILIntepreter.ResolveReference(ptr_of_this_method);
                         object ___obj = @stateMachine;
                         if (___dst->ObjectType >= ObjectTypes.Object)
                         {
@@ -653,7 +653,7 @@ namespace ILRuntime.Runtime.Generated
             {
                 case ObjectTypes.StackObjectReference:
                     {
-                        var ___dst = ptr_of_this_method->ValueLong;
+                        var ___dst = ILIntepreter.ResolveReference(ptr_of_this_method);
                         object ___obj = @awaiter;
                         if (___dst->ObjectType >= ObjectTypes.Object)
                         {
@@ -696,7 +696,7 @@ namespace ILRuntime.Runtime.Generated
                     break;
                  case ObjectTypes.ArrayReference:
                     {
-                        var instance_of_arrayReference = __mStack[ptr_of_this_method->Value] as System.Runtime.CompilerServices.TaskAwaiter<ETModel.IResponse>[];
+                        var instance_of_arrayReference = __mStack[ptr_of_this_method->Value] as ETModel.ETTask<ETModel.IResponse>.Awaiter[];
                         instance_of_arrayReference[ptr_of_this_method->ValueLow] = @awaiter;
                     }
                     break;
