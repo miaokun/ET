@@ -20,15 +20,27 @@ namespace ETHotfix
 		private GameObject account;
 		private GameObject loginBtn;
 
+        private Button testBtn;
+
 		public void Awake()
 		{
 			ReferenceCollector rc = this.GetParent<UI>().GameObject.GetComponent<ReferenceCollector>();
 			loginBtn = rc.Get<GameObject>("LoginBtn");
 			loginBtn.GetComponent<Button>().onClick.Add(OnLogin);
 			this.account = rc.Get<GameObject>("Account");
-		}
 
-		public void OnLogin()
+            testBtn = rc.Get<GameObject>("TestButton").GetComponent<Button>();
+            testBtn.onClick.Add(OnTestButtonClick);
+
+        }
+
+        private void OnTestButtonClick()
+        {
+            Debug.Log("test button");
+            Game.EventSystem.Run<string>(EventIdType.ShowFloatTips, "test float tips");
+        }
+
+        public void OnLogin()
 		{
 			LoginHelper.OnLoginAsync(this.account.GetComponent<InputField>().text).Coroutine();
 		}

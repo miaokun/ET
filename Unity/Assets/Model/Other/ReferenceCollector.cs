@@ -154,4 +154,9 @@ public class ReferenceCollector: MonoBehaviour, ISerializationCallbackReceiver
 			}
 		}
 	}
+
+    public void StartCoroutine(object onCloseLater)
+    {
+        throw new NotImplementedException();
+    }
 }
