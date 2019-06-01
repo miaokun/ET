@@ -72,3 +72,18 @@ message G2C_PlayerInfo // IResponse
     repeated int32 TestRepeatedInt32 = 4;
     repeated int64 TestRepeatedInt64 = 5;
 }
+
+message C2M_Chat // IActorLocationRequest
+{
+	int32 RpcId = 90;
+	int64 ActorId = 91;
+	string ChatInfo = 1;	// 消息
+}
+
+message M2C_Chat // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	string ChatInfo = 1;
+}
