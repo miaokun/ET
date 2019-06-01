@@ -9,6 +9,14 @@ namespace ETHotfix
 	    public const string UILogin = "UILogin";
 	    public const string UILobby = "UILobby";
 
+        /// <summary>
+        /// 浮动的tips
+        /// </summary>
         public const string UIFloatTips = "UIFloatTips";
+
+        /// <summary>
+        /// 测试面板
+        /// </summary>
+        public const string UITestPanel = "UITestPanel";
 	}
 }

@@ -13,9 +13,10 @@ namespace ETHotfix
 		{
 			self.Awake();
 		}
+        
 	}
-	
-	public class UILoginComponent: Component
+    
+    public class UILoginComponent: Component
 	{
 		private GameObject account;
 		private GameObject loginBtn;

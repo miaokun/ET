@@ -56,11 +56,27 @@ namespace ETHotfix
         }
         
 
+        /// <summary>
+        /// 先简答的现实创建
+        /// todo 没有判断重
+        /// </summary>
+        public static T ShowUI<T>(string name) where T : Component, new()
+        {
+            UI ui = Create<T>(name);
+            Game.Scene.GetComponent<UIComponent>().Add(ui);
+            return ui.GetComponent<T>();
+        }
+
         public static void Destory(string name)
         {
             Game.Scene.GetComponent<UIComponent>().Remove(name);
             ETModel.Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle(name.StringToAB());
         }
 
+
+        public static void ShowFloatTips(string message)
+        {
+            Game.EventSystem.Run<string>(EventIdType.ShowFloatTips, message);
+        }
     }
 }

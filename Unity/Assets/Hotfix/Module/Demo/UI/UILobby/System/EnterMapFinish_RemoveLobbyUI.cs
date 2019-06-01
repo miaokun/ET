@@ -9,6 +9,9 @@ namespace ETHotfix
 		{
 			Game.Scene.GetComponent<UIComponent>().Remove(UIType.UILobby);
 			ETModel.Game.Scene.GetComponent<ResourcesComponent>().UnloadBundle(UIType.UILobby.StringToAB());
+
+
+            UIHelper.ShowUI<UITestPanelComponent>(UIType.UITestPanel);
 		}
 	}
 }

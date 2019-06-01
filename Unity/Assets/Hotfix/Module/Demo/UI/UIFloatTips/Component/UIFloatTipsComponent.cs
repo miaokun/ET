@@ -31,13 +31,13 @@ namespace ETHotfix
     public class UIFloatTipsComponent : Component
     {
 
-        private Text text;
+        private Text _text;
 
         public void Awake(String txt)
         {
             ReferenceCollector rc = this.GetReferenceCollector();
-            text = rc.Get<GameObject>("Text").GetComponent<Text>();
-            text.text = txt;
+            _text = rc.Get<GameObject>("Text").GetComponent<Text>();
+            _text.text = txt;
             //rc.StartCoroutine(OnCloseLater());
         }
 
